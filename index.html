@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TapSpark - The Future of Digital Cards</title>
+    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #7b42f6;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #0f1722;
+            overflow-x: hidden;
+        }
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .glow {
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .card-glow {
+            animation: cardGlow 2s infinite alternate;
+        }
+        @keyframes cardGlow {
+            from { box-shadow: 0 0 20px var(--primary); }
+            to { box-shadow: 0 0 40px var(--secondary); }
+        }
+        .ripple {
+            position: absolute;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: rippleEffect 2s infinite;
+            opacity: 0;
+        }
+        @keyframes rippleEffect {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen relative overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0f1722] via-[#1a2635] to-[#0f1722] opacity-90"></div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 container mx-auto px-4 py-12">
+            <!-- Header -->
+            <header class="flex justify-between items-center mb-20">
+                <h1 class="orbitron text-3xl font-bold gradient-text">TapSpark</h1>
+                <button class="bg-gradient-to-r from-[#00f2fe] to-[#4facfe] px-6 py-2 rounded-full text-white hover:opacity-90 transition-all hover-scale">
+                    Get Started
+                </button>
+            </header>
+
+            <!-- Hero Section -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h2 class="orbitron text-4xl md:text-6xl font-bold mb-6">Ditch the Old,<br/><span class="gradient-text">Tap into the Future!</span></h2>
+                    <p class="text-gray-300 text-lg mb-8">The Smartest NFC Business & Review Cards – Just a Tap Away.</p>
+                    
+                    <div class="space-y-4 mb-12">
+                        <div class="flex items-center gap-4 hover-scale">
+                            <i class="bi bi-check-circle-fill text-[#00f2fe]"></i>
+                            <span>No Apps Required</span>
+                        </div>
+                        <div class="flex items-center gap-4 hover-scale">
+                            <i class="bi bi-check-circle-fill text-[#00f2fe]"></i>
+                            <span>Instant Contact & Review Sharing</span>
+                        </div>
+                        <div class="flex items-center gap-4 hover-scale">
+                            <i class="bi bi-check-circle-fill text-[#00f2fe]"></i>
+                            <span>Works on All Smartphones</span>
+                        </div>
+                    </div>
+
+                    <button class="bg-gradient-to-r from-[#7b42f6] to-[#4facfe] px-8 py-4 rounded-full text-white font-bold hover:opacity-90 transition-all glow hover-scale">
+                        Get Your NFC Card Now
+                    </button>
+                </div>
+
+                <div class="relative">
+                    <!-- Phone Mockup -->
+                    <div class="w-64 h-[500px] mx-auto bg-black rounded-[40px] p-4 border-4 border-gray-800 card-glow floating">
+                        <div class="bg-gradient-to-br from-[#1a2635] to-[#0f1722] h-full rounded-[32px] p-4">
+                            <div class="text-white text-center pt-12">
+                                <div class="text-5xl mb-4">⭐</div>
+                                <div class="text-2xl font-bold gradient-text mb-2">57</div>
+                                <div class="text-sm text-gray-400">Reviews Collected</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ripple Effects -->
+                    <div class="ripple absolute top-1/2 left-1/2 w-32 h-32 -translate-x-1/2 -translate-y-1/2"></div>
+                    <div class="ripple absolute top-1/2 left-1/2 w-48 h-48 -translate-x-1/2 -translate-y-1/2" style="animation-delay: 0.5s"></div>
+                </div>
+            </div>
+
+            <!-- How It Works Section -->
+            <div class="text-white text-center mt-32">
+                <h3 class="orbitron text-3xl font-bold mb-12">How It Works</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-lg bg-gradient-to-b from-[#1a2635] to-transparent hover-scale">
+                        <div class="w-12 h-12 rounded-full bg-[#00f2fe] text-black flex items-center justify-center mx-auto mb-4">1</div>
+                        <h4 class="font-bold mb-2">Tap Your Card</h4>
+                        <p class="text-gray-400">Simply tap your NFC card on any smartphone</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-gradient-to-b from-[#1a2635] to-transparent hover-scale">
+                        <div class="w-12 h-12 rounded-full bg-[#4facfe] text-black flex items-center justify-center mx-auto mb-4">2</div>
+                        <h4 class="font-bold mb-2">Share Info</h4>
+                        <p class="text-gray-400">Instantly share your contact details</p>
+                    </div>
+                    <div class="p-6 rounded-lg bg-gradient-to-b from-[#1a2635] to-transparent hover-scale">
+                        <div class="w-12 h-12 rounded-full bg-[#7b42f6] text-black flex items-center justify-center mx-auto mb-4">3</div>
+                        <h4 class="font-bold mb-2">Collect Reviews</h4>
+                        <p class="text-gray-400">Gather feedback seamlessly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll reveal animation
+        const elements = document.querySelectorAll('.grid > div');
+        elements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                el.style.transition = 'all 0.5s ease-out';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, index * 200);
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hover-scale').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
